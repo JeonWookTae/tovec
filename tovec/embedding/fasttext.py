@@ -15,9 +15,9 @@ class Fasttext(object):
         vector_list = list()
         for token in token_list:
             try:
-                vector_list.append(token)
+                vector_list.append(self.model[token])
             except KeyError:
-                vector_list.append(np.zeros[300] + 1e-7)
+                vector_list.append(np.zeros(300) + 1e-7)
         return vector_list
 
     def __call__(self, phrase):
