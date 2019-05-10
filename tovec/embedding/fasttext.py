@@ -38,7 +38,3 @@ class Fasttext(object):
         phrase = self.conver_list(phrase=phrase)
         return self.vectorize(token_list=phrase)
 
-
-if __name__ == '__main__':
-    Fasttext.trainer([['하이','안녕'], ['반가워','하이루'],['이거','이렇게','해야']])
-
