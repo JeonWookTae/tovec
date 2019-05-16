@@ -6,7 +6,7 @@ class CharFasttext(object):
     def __init__(self, path):
         self.model = FastText.load(path)
 
-    def conver_list(self, phrase):
+    def convert_list(self, phrase):
         if not isinstance(phrase, list):
             return list(phrase)
         return phrase
@@ -39,6 +39,6 @@ class CharFasttext(object):
             self.model.train(corpus, total_examples=len(corpus), epochs=10)
 
     def __call__(self, phrase):
-        phrase = self.conver_list(phrase=phrase)
+        phrase = self.convert_list(phrase=phrase)
         return self.vectorize(token_list=phrase)
 
