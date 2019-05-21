@@ -10,3 +10,12 @@ class Vector(object):
     def vectorize(self, phrase):
         phrase = self.token(phrase=phrase)
         return self.model(phrase=phrase)
+
+
+class WordPieceVector(object):
+    def __init__(self, path):
+        self.token = Tokenizer()
+        self.model = Fasttext(path=path)
+
+    def token(self):
+        pass
