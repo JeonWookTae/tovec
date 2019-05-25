@@ -21,14 +21,13 @@ class Fasttext(object):
                 vector_list.append(np.zeros(self.size) + 1e-7)
         return vector_list
 
-    @classmethod
-    def trainer(cls, corpus, size):
+    def trainer(self, corpus):
         """
         :param corpus: [sentence: [word, word, . . ., word], . . ., sentence]
         :return:
         """
-        train_instance = FastText(sentences=corpus, size=size, window=5, min_count=1)
-        cls.model = train_instance
+        train_instance = FastText(sentences=corpus, size=self.size, window=5, min_count=1)
+        self.model = train_instance
 
     def updater(self, corpus):
         if self.model:

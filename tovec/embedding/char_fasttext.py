@@ -5,6 +5,7 @@ import numpy as np
 class CharFasttext(object):
     def __init__(self, path):
         self.model = FastText.load(path)
+        self.size = 300
 
     def convert_list(self, phrase):
         if not isinstance(phrase, list):
@@ -21,17 +22,16 @@ class CharFasttext(object):
             ch_list = list()
             for ch in token:
                 ch_list.append(self.model[ch])
-            vector_list.append(np.mean(ch_list, axis=1))
+            vector_list.append(np.sum(ch_list, axis=1))
         return vector_list
 
-    @classmethod
-    def trainer(cls, corpus):
+    def trainer(self, corpus):
         """
         :param corpus: [sentence: [ch, ch, . . ., ch]]
         :return:
         """
-        train_instance = FastText(sentences=corpus, size=300, window=8, min_count=1)
-        cls.model = train_instance
+        train_instance = FastText(sentences=corpus, size=self.size, window=8, min_count=1)
+        self.model = train_instance
 
     def updater(self, corpus):
         if self.model:
