@@ -1,4 +1,4 @@
-tensorflow == 1.8.0
+tensorflow == 2.6.4
 konlpy >= 0.5.1
 gensim >= 3.7.1
 scikit-image >= 0.15.0
